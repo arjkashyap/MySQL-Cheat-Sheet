@@ -32,6 +32,10 @@ Here root, specifier the username with which you want to login into your databas
    - Creating a table
    - Delete table
    - Data types
+   - Insert Data row/record
+4. [Querying Data](#querying)
+   - The SELECT statement
+   - Where Clause
 
 ---
 
@@ -161,4 +165,81 @@ You can use the same **_DROP_** command that we used earlier with the database t
 
 ```sql
     DROP users
+```
+
+### Inserting data into Table
+
+So now we have created our first table and inserted columns attributes in it. Now all we need is some data. To insert data into MySQL we use the **_INSERT_** statmenet. <br/>
+
+The Insert statement allows you to insert one or more rows into the table. The sytax for Inserting data rows is as follows: <br/>
+
+INSERT INTO table_name(c1, c2, c3, . . . ) <br/>
+VALUES (v1, v2, v3 . . .); <br/>
+
+We have to make sure that the column names we specify match with our data entry. For our users table, we will insert data as follows:
+
+```sql
+    INSERT INTO users(first_name, last_name, email, house_address, register_date)
+    VALUES ('John', 'Doe', 'johndoe@gmail.com', '26 second street NY', now());
+```
+
+In our above example, we have not inserted the id filed because we have specified it to be **_AUTO_INCREMENT_** which means it will be auto generated and incremented in each row.
+**_now()_** is a function which is used to get the current date and time.
+
+### Inserting Multiple rows
+
+Inserting Multiple rows is same as inserting a single record, the only difference is that the values are seperated by commas.
+
+```sql
+    INSERT INTO users(first_name, last_name, email, house_address, register_date)
+    VALUES ('Nathan', 'Dave', 'nateDave@gmail.com', '296/9 Dummy Lane', now()),
+    ('Jane', 'Doe', 'jane@gmail.com', 'Rhode Island', now()),
+    ('Netalie', 'Reeves', 'nat767@gmail.com', 'new hemisphere', now()),
+    ('Shane', 'Borne', 'shanebore@gmail.com', 'Boston', now()),
+    ('Johanthan', 'Cooper', 'johncooper123.com', 'Rhode Island', now()),
+```
+
+<a name="querying"></a>
+
+## 4. Querying Data
+
+We have already used the **_SELECT_** statement for viewing our table entries.
+
+```sql
+    SELECT * FROM users
+```
+
+Here, \* represents the wild card known as all. The above statement specifies, select ALL from the users table. <br/>
+
+We can instead use the names of column to display the relevant information. Suppose you want to see only the first and the last name from the users table:
+
+```sql
+    SELECT first_name, last_name FROM users;
+
+    +------------+-----------+
+    | first_name | last_name |
+    +------------+-----------+
+    | John       | Doe       |
+    | Nathan     | Dave      |
+    | Jane       | Doe       |
+    | Netalie    | Reeves    |
+    | Shane      | Borne     |
+    | Johanthan  | Cooper    |
+    +------------+-----------+
+```
+
+### Where Clause
+
+The **_WHERE_** clause comes in handy, when you want to filter your queried data based on some specific attributes. <br/>
+You can mix select statement with where to make some very powerful query filter.
+Suppose I want to filter the first_name, email and the house_address of the users who live on Rhode Island
+
+```sql
+    SELECT first_name, email, house_address FROM users WHERE house_address="Rhode Island";
+    +------------+-------------------+---------------+
+    | first_name | email             | house_address |
+    +------------+-------------------+---------------+
+    | Jane       | jane@gmail.com    | Rhode Island  |
+    | Johanthan  | johncooper123.com | Rhode Island  |
+    +------------+-------------------+---------------+
 ```
