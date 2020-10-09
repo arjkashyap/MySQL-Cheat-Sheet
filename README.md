@@ -1,6 +1,6 @@
 # A Brief Introduction to SQL [[Part I]]
 
-SQL is a standard language for storing, manupulating, and retrieving data in relational database systems (RDMS). Some examples of such RDMS are:
+SQL is a standard language for storing, manipulating, and retrieving data in relational database systems (RDMS). Some examples of such RDMS are:
 
 - MySQL
 - Oracle
@@ -13,7 +13,7 @@ After installing MySQL on your system, make sure that your enviroment variables 
 $ mysql -u root -p
 ```
 
-Here root, specifier the username with which you want to login into your database. You will need to enter your password after this. You can also use MYSQL workbench instead of terminal. This makes your workflow bettter.
+Here root, specifier the username with which you want to login into your database. You will need to enter your password after this. You can also use MYSQL workbench instead of terminal. This makes your workflow better.
 <br/>
 
 
@@ -54,11 +54,11 @@ After loging into your sql shell, you can create a new user by the following com
     CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
 ```
 
-Managing your database as a root user is a very bad practise and can be dangerous when you're dealing with sensitive enterprise data, so it is always recomended to first create a new user (from root) and specify the access roles and permissions for this user.
+Managing your database as a root user is a very bad practice and can be dangerous when you're dealing with sensitive enterprise data, so it is always recomended to first create a new user (from root) and specify the access roles and permissions for this user.
 
 ### Grant permissions:
 
-After creating your new users, you would like to assign some permissions. To keep this cheat sheet simple, we will grant all permissions to this user. Please note that, granting all permissions to a user is a bad practise, but we will let this slip for the purpose of this tutorial. We will use the following queries:
+After creating your new users, you would like to assign some permissions. To keep this cheat sheet simple, we will grant all permissions to this user. Please note that, granting all permissions to a user is a bad practice, but we will let this slip for the purpose of this tutorial. We will use the following queries:
 
 ```sql
     GRANT ALL PRIVILEGES ON * . * TO 'username'@'localhost';
@@ -138,7 +138,7 @@ column_name data_type(length) [NOT NULL] [DEFAULT value] [AUTO_INCREMENT];
 
 - **_NOT NULL_** constrain makes sure that the column value is not null.
 
-- **_DEFAULT value_** can be used to assign a default value for the calumn.
+- **_DEFAULT value_** can be used to assign a default value for the column.
 
 - **_AUTO_INCREMENT_** is used when you want to assign a value to the column automatically by incrementing its value whenever a new row is added to the table.
 
@@ -156,7 +156,7 @@ Let us get back to our test database and create a users table.
     );
 ```
 
-Primary key is a field added to the end of the column defination which specifies the column that should be treated as pk. In this case we are treating our user id as a primary case and want to specify an **_AUTO_INCREMENT_** clause so that it is automatically assigned to every user.
+Primary key is a field added to the end of the column definition which specifies the column that should be treated as pk. In this case we are treating our user id as a primary case and want to specify an **_AUTO_INCREMENT_** clause so that it is automatically assigned to every user.
 
 > > Make sure that your primary key is a unique value
 
@@ -172,9 +172,9 @@ You can use the same **_DROP_** command that we used earlier with the database t
 
 ### Inserting data into Table
 
-So now we have created our first table and inserted columns attributes in it. Now all we need is some data. To insert data into MySQL we use the **_INSERT_** statmenet. <br/>
+So now we have created our first table and inserted columns attributes in it. Now all we need is some data. To insert data into MySQL we use the **_INSERT_** statement . <br/>
 
-The Insert statement allows you to insert one or more rows into the table. The sytax for Inserting data rows is as follows: <br/>
+The Insert statement allows you to insert one or more rows into the table. The syntax for Inserting data rows is as follows: <br/>
 
 INSERT INTO table_name(c1, c2, c3, . . . ) <br/>
 VALUES (v1, v2, v3 . . .); <br/>
