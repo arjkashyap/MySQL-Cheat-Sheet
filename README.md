@@ -1,6 +1,4 @@
-<!-- A quick cheat sheet of all relevant SQL queries and examples on how to use them.  -->
-
-# A Brief Introduction to SQL
+# A Brief Introduction to SQL [[Part I]]
 
 SQL is a standard language for storing, manupulating, and retrieving data in relational database systems (RDMS). Some examples of such RDMS are:
 
@@ -16,6 +14,8 @@ $ mysql -u root -p
 ```
 
 Here root, specifier the username with which you want to login into your database. You will need to enter your password after this. You can also use MYSQL workbench instead of terminal. This makes your workflow bettter.
+<br/>
+
 
 ---
 
@@ -36,6 +36,9 @@ Here root, specifier the username with which you want to login into your databas
 4. [Querying Data](#querying)
    - The SELECT statement
    - Where Clause
+5. [Delete & Update](#delupdate)
+   - Delete Operation
+   - Update row data
 
 ---
 
@@ -230,7 +233,7 @@ We can instead use the names of column to display the relevant information. Supp
 
 ### Where Clause
 
-The **_WHERE_** clause comes in handy, when you want to filter your queried data based on some specific attributes. <br/>
+The **_WHERE_** clause comes in handy, when you want to filter your queried data based on some specific attributes. <br/> It is used to specify a condition while fetching the data from a table.
 You can mix select statement with where to make some very powerful query filter.
 Suppose I want to filter the first_name, email and the house_address of the users who live on Rhode Island
 
@@ -242,4 +245,47 @@ Suppose I want to filter the first_name, email and the house_address of the user
     | Jane       | jane@gmail.com    | Rhode Island  |
     | Johanthan  | johncooper123.com | Rhode Island  |
     +------------+-------------------+---------------+
+```
+
+Not only this, we can add multiple conditions. Say we want to query users who are from Rhode Island and named Jane.
+
+```sql
+        SELECT first_name, email, house_address FROM users WHERE house_address="Rhode Island" AND first_name="Jane";
+    +------------+-------------------+---------------+
+    | first_name | email             | house_address |
+    +------------+-------------------+---------------+
+    | Jane       | jane@gmail.com    | Rhode Island  |
+    +------------+-------------------+---------------+
+```
+
+You can use all kinds of operators here, such as **_<_** or **_>_** to filter results. We will cover these operators later.
+
+<a name="delupdate"></a>
+
+## Delete & Update row data
+
+### Deletion
+
+Deletion can be done with the help of the **_DELETE_** clause. Mostly, it is used with the **_WHERE_** statement in reference to the primary key. In the below example we will delete a user with the primary key 5.
+
+```sql
+    DELETE FROM users WHERE id=5;
+```
+
+Now when you run **_SELECT _ FROM users;\***, you will observe that the user with primary key 5 is no longer in the table.
+
+> > Please note that deletion is a very delicate operation. Be sure to use the WHERE clause, otherwise you may endup deleting the whole table.
+
+### Update info
+
+Update is one of the most frequent operations which is performed on a database. It can be undertaken with the help of the **_UPDATE_** and **_SET_** clause. The basic syntax for updating an entry is as follows: <br/>
+
+UPDATE table_name
+SET column1 = value1, column2 = value2...., columnN = valueN
+WHERE [condition];
+
+Lets say that Nathan had a typo in his email address and wants to change it.
+
+```sql
+    UPDATE users SET email="nathandave@gmail.com" WHERE id=2;
 ```
