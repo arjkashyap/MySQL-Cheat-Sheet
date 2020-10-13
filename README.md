@@ -54,12 +54,11 @@ Here root, specifier the username with which you want to login into your databas
    - Inner Join
    - Left & Right Join
 10. [Aggregate Functions](#aggregate)
-
-- Count
-- Max
-- Min
-- Sum
-- Cases
+    - Count
+    - Max
+    - Min
+    - Sum
+    - Cases
 
 ---
 
